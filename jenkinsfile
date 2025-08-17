@@ -3,7 +3,10 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git branch: 'main', url: 'https://github.com/bobhatevishal/capstone_project.git'
+                // Use credentialsId for GitHub token authentication
+                git branch: 'main', 
+                    url: 'https://github.com/bobhatevishal/capstone_project.git', 
+                    credentialsId: 'githubcredentials'
             }
         }
         stage('Build') {
@@ -18,7 +21,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'echo "Deploy step placeholder...."'
+                sh 'echo "Deploy step placeholder.."'
             }
         }
     }
